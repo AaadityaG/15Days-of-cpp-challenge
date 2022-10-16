@@ -1,0 +1,85 @@
+-> In summary...
+
+• new keyword: operator
+• Every operator is associated with an operator function that defines its behavior
+Operator Expression Operator Function
+a + b                operator+(a, b)
+a = b                operator=(a, b)
+c = a + b            operator=(c, operator+(a, b))
+• Operator functions are implicit for predefined operators of built-in types and cannot be
+  redefined
+• An operator function may have a signature as:
+  MyType a, b; // An enum or struct
+// Operator function
+MyType operator+(const MyType&, const MyType&);
+a + b // Calls operator+(a, b)
+• C++ allows users to define an operator function and overload it
+
+-------------------------------------------------------------------------------
+
+-> Non-Member Operator Function...
+
+• A non-member operator function may be a
+    ◦ Global Function
+    ◦ friend Function
+• Binary Operator:
+  MyType a, b; // An enum, struct or class
+  MyType operator+(const MyType&, const MyType&); // Global
+  friend MyType operator+(const MyType&, const MyType&); // Friend
+• Unary Operator:
+  MyType operator++(const MyType&); // Global
+  friend MyType operator++(const MyType&); // Friend
+• Note: The parameters may not be constant and may be passed by value. The return may also
+  be by reference and may be constant
+• Examples:
+Operator Expression Operator Function
+a + b               operator+(a, b)
+a = b               operator=(a, b)
+++a                 operator++(a)
+a++                 operator++(a, int) Special Case
+c = a + b           operator=(c, operator+(a, b))
+
+---------------------------------------------------------------------------------
+
+-> Member Operator Function...
+
+• Binary Operator:
+  MyType a, b; // MyType is a class
+  MyType operator+(const MyType&); // Operator function
+• The left operand is the invoking object – right is taken as a parameter
+• Unary Operator:
+  MyType operator-(); // Operator function for Unary minus
+  MyType operator++(); // For Pre-Incrementer
+  MyType operator++(int); // For post-Incrementer
+• The only operand is the invoking object
+• Note: The parameters may not be constant and may be passed by value. The return may also
+  be by reference and may be constant
+• Examples:
+Operator Expression Operator Function
+a + b               a.operator+(b)
+a = b               a.operator=(b)
+++a                 a.operator++()
+a++                 a.operator++(int) // Special Case
+c = a + b           c.operator =(a.operator+(b))
+
+--------------------------------------------------------------------------------
+
+Rules for operator overloading - 
+
+• Use global function when encapsulation is not a concern. For example, using struct String
+  { char* str; } to wrap a C-string and overload operator+ to concatenate strings and build
+  a String algebra
+• Use member function when the left operand is necessarily an object of a class where the
+  operator function is a member. Specifically operator=, operator new, operator new[], operator
+  delete etc. must be member functions
+• Use friend function, otherwise for operators like <<, >>, relational (<, >, ==, !=, <=, >=)
+  should be overloaded through friend
+• While overloading an operator, try to preserve its natural semantics for built-in types as much
+  as possible. For example, operator+ in a Set class should compute union and NOT
+  intersection
+• Usually stick to the parameter passing conventions (built-in types by value and UDT’s by
+  constant reference)
+• Decide on the return type based on the natural semantics for built-in types as illustrated in the
+examples:
+• Consider the effect of casting on operands
+• Only overload the operators that you may need (minimal design)
