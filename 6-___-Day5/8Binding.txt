@@ -1,0 +1,12 @@
+Binding - refers to the process of converting identifiers (such as
+          variable and performance names) into addresses.
+
+Its types - 
+
+1.Static Binding - (Early binding)
+    e.g. function calls, overloaded function calls, 
+         and overloaded operators are done at compile-time.
+
+2.Dynamic Binding - (Late binding)
+    e.g. Function pointers, Virtual functions are examples of late binding
+
