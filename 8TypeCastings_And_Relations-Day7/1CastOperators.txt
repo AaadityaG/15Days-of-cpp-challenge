@@ -1,0 +1,15 @@
+1.const cast operator: const cast<type>(expr)
+    -> Explicitly overrides const and/or volatile in a cast
+    -> Usually does not perform computation or change value
+
+2.static cast operator: static cast<type>(expr)
+    -> Performs a non-polymorphic cast
+    -> Usually performs computation to change value – implicit or user-defined
+
+3.reinterpret cast operator: reinterpret cast<type>(expr)
+    -> Casts between unrelated pointer types or pointer and integer
+    -> Does not perform computation yet reinterprets value
+
+4.dynamic cast operator: dynamic cast<type>(expr)
+    -> Performs a run-time cast that verifies the validity of the cast
+    -> Performs pre-defined computation, sets null or throws exception

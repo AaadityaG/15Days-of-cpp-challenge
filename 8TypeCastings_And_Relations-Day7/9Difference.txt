@@ -1,0 +1,15 @@
+const_cast:
+can be used to remove or add const to a variable. This can be useful if it is necessary to add/remove constness from a variable.
+
+static_cast:
+This is used for the normal/ordinary type conversion. This is also the cast responsible for implicit type coersion and can also be called explicitly. You should use it in cases like converting float to int, char to int, etc.
+
+dynamic_cast:
+This cast is used for handling polymorphism. You only need to use it when you're casting to a derived class. This is exclusively to be used in inheritence when you cast from base class to derived class.
+
+reinterpret_cast:
+This is the trickiest to use. It is used for reinterpreting bit patterns and is extremely low level. It's used primarily for things like turning a raw data bit stream into actual data or storing data in the low bits of an aligned pointer.
+
+
+
+-> https://www.tutorialspoint.com/When-should-static-cast-dynamic-cast-const-cast-and-reinterpret-cast-be-used-in-Cplusplus
