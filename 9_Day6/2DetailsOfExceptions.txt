@@ -1,0 +1,38 @@
+
+[1] Error Incidence -
+• Synchronous (S/W) Logical Error
+• Asynchronous (H/W) Interrupt (S/W Interrupt)
+
+[2] Create Object & Raise Exception
+• An Exception Object can be of any Complete Type - an int to a full blown C++ class
+object
+
+[3] Detect Exception -
+• Polling – Software Tests
+• Notification – Control (Stack) Adjustments
+
+[4] Handle Exception -
+• Ignore: hope someone else handles it, that is, Do Not Catch
+• Act: but allow others to handle it afterwards, that is, Catch, Handle and Re-Throw
+• Own: take complete ownership, that is, Catch and Handle
+
+[5] Recover from Exception -
+• Continue Execution: If handled inside the program
+• Abort Execution: If handled outside the program
+
+
+
+Code ->
+
+int f() {
+    int error;
+    if (error) /* Stage 1: error occurred */
+    return -1; /* Stage 2: generate exception object */
+}
+int main(void) {
+    if(f() != 0) /* Stage 3: detect exception */
+    {
+        /* Stage 4: handle exception */
+    }
+    /* Stage 5: recover */
+}

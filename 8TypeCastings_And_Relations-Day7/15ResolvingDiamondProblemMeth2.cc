@@ -27,7 +27,7 @@ public:
     }
 };
 
-int main() { 
+int main(){ 
     TA ta(30);
 }
 
